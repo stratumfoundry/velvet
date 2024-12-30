@@ -1,5 +1,5 @@
 name: velvet
-repository: https://github.com/dedecube/velvet
+repository: https://github.com/stratumfoundry/velvet
 sdkPath: .fvm/flutter_sdk
 
 command:
