@@ -1,4 +1,4 @@
-import 'package:velvet_framework/src/error_handling/exception_to_message_resolver.dart';
+import 'package:error_handling_velvet_plugin/src/exception_to_message_resolver.dart';
 
 /// A function type that matches an [Exception] and performs some action.
 ///

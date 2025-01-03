@@ -1,8 +1,6 @@
+import 'package:error_handling_velvet_plugin/src/helper/stack_trace_parser.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:velvet_support/velvet_support.dart';
-
-import 'package:velvet_framework/src/error_handling/helper/stack_trace_parser.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 class StrackTraceParsedLineRow extends HookWidget {
   const StrackTraceParsedLineRow({super.key, required this.line});

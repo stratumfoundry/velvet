@@ -1,6 +1,6 @@
+import 'package:error_handling_velvet_plugin/src/contracts/error_handling_config_contract.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:velvet_framework/src/error_handling/contracts/error_handling_config_contract.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 class DefaultErrorHandlingConfig extends ErrorHandlingConfigContract {
   @override

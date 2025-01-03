@@ -1,4 +1,4 @@
-import 'package:velvet_framework/src/error_handling/bag_exception.dart';
+import 'package:velvet_framework/src/http/exceptions/bag_exception.dart';
 import 'package:velvet_framework/src/http/exceptions/http_request/http_request_exception.dart';
 
 class HttpRequestBagException extends HttpRequestException

@@ -1,7 +1,6 @@
+import 'package:error_handling_velvet_plugin/src/helper/stack_trace_parser.dart';
+import 'package:error_handling_velvet_plugin/src/widgets/strack_trace_parsed_line_row.dart';
 import 'package:flutter/material.dart';
-
-import 'package:velvet_framework/src/error_handling/helper/stack_trace_parser.dart';
-import 'package:velvet_framework/src/kernel/widgets/components/strack_trace_parsed_line_row.dart';
 
 class StackTraceViewer extends StatelessWidget {
   const StackTraceViewer({
