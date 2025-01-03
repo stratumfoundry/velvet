@@ -14,7 +14,7 @@ part of 'use_input.dart';
 ///
 /// Note: This function is part of the `useInput` framework and should not be called directly.
 T? _useInitialValueForDebug<T>(String name, T? initialValue) {
-  final formConfig = config<FormConfigContract>();
+  final formConfig = container.get<FormConfigContract>();
 
   if (!formConfig.shouldUsePrecompiledValuesEnabled) {
     return initialValue;

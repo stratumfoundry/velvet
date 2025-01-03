@@ -1,8 +1,8 @@
-import 'package:velvet_framework/src/core/utils/env.dart';
-import 'package:velvet_framework/src/form/contracts/form_config_contract.dart';
-import 'package:velvet_framework/src/form/hooks/use_form/use_form.dart';
-import 'package:velvet_framework/src/form/hooks/use_input/input_options.dart';
-import 'package:velvet_framework/src/form/hooks/use_input/use_input.dart';
+import 'package:form_velvet_plugin/src/contracts/form_config_contract.dart';
+import 'package:form_velvet_plugin/src/hooks/use_form/use_form.dart';
+import 'package:form_velvet_plugin/src/hooks/use_input/input_options.dart';
+import 'package:form_velvet_plugin/src/hooks/use_input/use_input.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 class DefaultFormConfig implements FormConfigContract {
   @override

@@ -1,12 +1,9 @@
+import 'package:error_handling_velvet_plugin/error_handling_velvet_plugin.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-
-import 'package:velvet_framework/src/core/utils/config.dart';
-import 'package:velvet_framework/src/error_handling/types.dart';
-import 'package:velvet_framework/src/validation/velvet_rule.dart';
-import 'package:velvet_framework/src/form/contracts/form_config_contract.dart';
-import 'package:velvet_framework/src/form/hooks/use_input/input_options.dart';
-import 'package:velvet_framework/src/form/hooks/use_input/use_input.dart';
+import 'package:form_velvet_plugin/src/contracts/form_config_contract.dart';
+import 'package:form_velvet_plugin/src/hooks/use_input/input_options.dart';
+import 'package:form_velvet_plugin/src/hooks/use_input/use_input.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 part '_use_text_input_return.dart';
 
@@ -19,7 +16,7 @@ UseTextInputReturn useTextInput({
       const [],
   InputOnFailureFactory? onFailureFactory,
 }) {
-  options ??= config<FormConfigContract>().defaultInputOptions;
+  options ??= container.get<FormConfigContract>().defaultInputOptions;
 
   final input = useInput<String>(
     rules: rules,

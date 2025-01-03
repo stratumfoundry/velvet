@@ -1,15 +1,9 @@
+import 'package:error_handling_velvet_plugin/error_handling_velvet_plugin.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:velvet_framework/src/core/utils/config.dart';
-import 'package:velvet_framework/src/core/velvet_container.dart';
-import 'package:velvet_framework/src/error_handling/types.dart';
-import 'package:velvet_framework/src/form/contracts/form_config_contract.dart';
-import 'package:velvet_framework/src/form/hooks/use_input/input_options.dart';
-import 'package:velvet_framework/src/hooks/use_effect_once/use_effect_once.dart';
-import 'package:velvet_framework/src/validation/velvet_rule.dart';
-import 'package:velvet_framework/src/validation/velvet_validator.dart';
-import 'package:velvet_support/velvet_support.dart';
+import 'package:form_velvet_plugin/src/contracts/form_config_contract.dart';
+import 'package:form_velvet_plugin/src/hooks/use_input/input_options.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 part '_use_clear_error_on_change.dart';
 part '_use_clear_error_on_focus.dart';
@@ -94,7 +88,7 @@ UseInputReturn<T> useInput<T>({
     initialValue = _useInitialValueForDebug<T>(name, initialValue);
   }
 
-  options ??= config<FormConfigContract>().defaultInputOptions;
+  options ??= container.get<FormConfigContract>().defaultInputOptions;
 
   final focusNode = useFocusNode();
   final error = useState<String?>(null);

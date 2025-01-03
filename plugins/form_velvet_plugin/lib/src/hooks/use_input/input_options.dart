@@ -1,4 +1,4 @@
-import 'package:velvet_annotation/velvet_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'input_options.freezed.dart';
 
