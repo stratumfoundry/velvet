@@ -1,4 +1,4 @@
-import 'package:velvet_framework/core/config/velvet_config.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 /// A contract defining the configuration for the developer inspector.
 abstract class DevInspectorConfigContract extends VelvetConfig {

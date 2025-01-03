@@ -1,12 +1,11 @@
 import 'package:dev_panel_velvet_plugin/src/contracts/dev_inspector_adapter_contract.dart';
 import 'package:flutter/material.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-import 'package:velvet_framework/talker/talker_global_instance.dart';
-import 'package:velvet_framework/translation/extensions/translator_extension.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 class DevInspectorTalkerAdapter implements DevInspectorAdapterContract {
   @override
-  open(BuildContext context) {
+  void open(BuildContext context) {
     showModalBottomSheet(
       context: context,
       useSafeArea: true,
@@ -29,7 +28,7 @@ class DevInspectorTalkerAdapter implements DevInspectorAdapterContract {
             body: TabBarView(
               children: [
                 TalkerView(
-                  talker: talkerGlobalInstance,
+                  talker: container.get<Talker>(),
                   theme: TalkerScreenTheme.fromTheme(ThemeData()),
                   appBarLeading: Text(
                     context.translate('velvet.dev_inspector.talker.title'),

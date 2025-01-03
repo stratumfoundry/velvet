@@ -8,5 +8,5 @@ abstract interface class DevInspectorAdapterContract {
   /// Opens the developer inspector.
   ///
   /// The [context] parameter is the build context of the widget.
-  open(BuildContext context);
+  void open(BuildContext context);
 }
