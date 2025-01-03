@@ -1,9 +1,5 @@
-library velvet_annotation;
+library;
 
-export 'package:freezed_annotation/freezed_annotation.dart';
-export 'package:json_annotation/json_annotation.dart';
-// ignore: invalid_export_of_internal_element
-export 'package:riverpod_annotation/riverpod_annotation.dart';
-
-export 'src/annotations/velvet_autoloader.dart';
-export 'src/misc/config_binder.dart';
+// @index(['./src/**/(*.dart)','!./src/**/*.g.dart', '!./src/**/*.freezed.dart', '!./src/**/_*.dart'], f => `export '${f.path}.dart';`)
+export './src/annotations/velvet_autoloader.dart';
+// @endindex
