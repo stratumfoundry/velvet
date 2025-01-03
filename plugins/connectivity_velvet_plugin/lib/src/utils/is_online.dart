@@ -2,5 +2,5 @@ import 'package:connectivity_velvet_plugin/src/notifiers/connectivity_notifier.d
 import 'package:velvet_framework/velvet_framework.dart';
 
 bool isOnline() {
-  return riverpodContainer().read(connectivityNotifierProvider);
+  return container.get<ConnectivityNotifier>().isOnline;
 }

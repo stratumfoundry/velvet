@@ -1,4 +1,4 @@
-library connectivity_velvet_plugin;
+library;
 
 // @index(['./**/(*.dart)','!./**/*.g.dart', '!./**/_*.dart'], f => `export '${f.path}.dart';`)
 export './src/connectivity_velvet_plugin.dart';
