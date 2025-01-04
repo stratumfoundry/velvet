@@ -1,4 +1,4 @@
-import 'package:velvet_framework/src/core/event/velvet_event.dart';
+import 'package:velvet_framework/src/core/event/events/velvet_event.dart';
 import 'package:velvet_framework/src/core/plugin/velvet_plugin.dart';
 
 /// Represents an event that is triggered before a Velvet plugin is registered.

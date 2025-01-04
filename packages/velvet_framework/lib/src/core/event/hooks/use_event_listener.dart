@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:velvet_framework/src/core/event/events/velvet_event.dart';
 import 'package:velvet_framework/src/core/event/utils/listen.dart';
-import 'package:velvet_framework/src/core/event/velvet_event.dart';
 import 'package:velvet_framework/src/hooks/use_effect_once/use_effect_once.dart';
 
 /// Listens to the specified event and calls the callback when the event is

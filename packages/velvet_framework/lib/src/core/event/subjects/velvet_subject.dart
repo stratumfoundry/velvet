@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:velvet_framework/src/core/event/velvet_observer.dart';
+import 'package:velvet_framework/src/core/event/observers/velvet_observer.dart';
 
 class VelvetSubject<T extends VelvetObserver> {
   final ObserverList<T> _observers = ObserverList();
