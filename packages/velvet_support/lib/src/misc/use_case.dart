@@ -9,7 +9,7 @@ import 'dart:async';
 /// A use case should be a pure function that does not have any side effects.
 /// It should only perform the operation it is designed to do and return the result.
 /// It MUST NOT interact with the UI.
-abstract interface class UseCaseContract<Return> {
+abstract interface class UseCase<Return> {
   /// Executes the use case.
   ///
   /// The method should return a [Future] that resolves to the result of the use case.
