@@ -9,6 +9,7 @@ abstract class VelvetLoggerChannel {
   /// The [error] parameter represents an optional error associated with the debug message.
   /// The [stackTrace] parameter represents an optional stack trace associated with the debug message.
   void debug(
+    // ignore: avoid-dynamic
     dynamic message, [
     Object? error,
     StackTrace? stackTrace,
@@ -20,6 +21,7 @@ abstract class VelvetLoggerChannel {
   /// The [error] parameter represents an optional error associated with the info message.
   /// The [stackTrace] parameter represents an optional stack trace associated with the info message.
   void info(
+    // ignore: avoid-dynamic
     dynamic message, [
     Object? error,
     StackTrace? stackTrace,
@@ -31,6 +33,7 @@ abstract class VelvetLoggerChannel {
   /// The [error] parameter represents an optional error associated with the warning message.
   /// The [stackTrace] parameter represents an optional stack trace associated with the warning message.
   void warning(
+    // ignore: avoid-dynamic
     dynamic message, [
     Object? error,
     StackTrace? stackTrace,
@@ -42,6 +45,7 @@ abstract class VelvetLoggerChannel {
   /// The [error] parameter represents an optional error associated with the error message.
   /// The [stackTrace] parameter represents an optional stack trace associated with the error message.
   void error(
+    // ignore: avoid-dynamic
     dynamic message, [
     Object? error,
     StackTrace? stackTrace,
@@ -53,6 +57,7 @@ abstract class VelvetLoggerChannel {
   /// The [error] parameter represents an optional error associated with the critical message.
   /// The [stackTrace] parameter represents an optional stack trace associated with the critical message.
   void critical(
+    // ignore: avoid-dynamic
     dynamic message, [
     Object? error,
     StackTrace? stackTrace,

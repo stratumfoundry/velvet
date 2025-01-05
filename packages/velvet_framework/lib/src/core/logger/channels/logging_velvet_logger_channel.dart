@@ -10,7 +10,7 @@ class LoggingVelvetLoggerChannel extends VelvetLoggerChannel {
     });
   }
 
-  final _log = Logger('VelvetFramework');
+  final _log = Logger('Velvet');
 
   @override
   void critical(message, [Object? error, StackTrace? stackTrace]) {
