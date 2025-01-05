@@ -18,6 +18,13 @@ import 'package:velvet_framework/src/kernel/kernel.dart';
 /// }
 /// ```
 abstract class VelvetPlugin {
+  /// The method that is called before the app startup.
+  /// This method is called before the app startup to allow the plugin to perform any necessary initialization,
+  /// like interacts with the kernel before registering the plugin.
+  FutureOr<void> beforeAppStartup() {
+    return Future.value();
+  }
+
   /// The method that is called to register the plugin with the Velvet framework.
   FutureOr<void> register() {
     return Future.value();

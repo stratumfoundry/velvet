@@ -14,6 +14,11 @@ abstract class VelvetPluginManagerContract {
   /// Adds a [VelvetPlugin] to the manager.
   void addPlugin(VelvetPlugin plugin);
 
+  /// Runs the before app startup process.
+  ///
+  /// Returns a [Future] that completes when the before app startup process is finished.
+  FutureOr<void> runBeforeAppStartup();
+
   /// Runs the register process.
   ///
   /// Returns a [Future] that completes when the register process is finished.
