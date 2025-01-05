@@ -1,4 +1,4 @@
-import 'package:velvet_framework/velvet_framework.dart';
+import 'package:form_velvet_plugin/form_velvet_plugin.dart';
 
 InputOptions useInputOptions() {
   return InputOptions(

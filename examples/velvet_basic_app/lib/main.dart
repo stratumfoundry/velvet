@@ -1,21 +1,40 @@
-import 'package:velvet_framework/velvet_framework.dart';
-
+import 'package:connectivity_velvet_plugin/connectivity_velvet_plugin.dart';
+import 'package:form_velvet_plugin/form_velvet_plugin.dart';
+import 'package:riverpod_velvet_plugin/riverpod_velvet_plugin.dart';
 import 'package:velvet_basic_app/config/form_config.dart';
 import 'package:velvet_basic_app/config/router_config.dart';
-import 'package:velvet_basic_app/core/observers/plugin_manager_observer.dart';
-import 'package:velvet_basic_app/core/observers/plugin_observer.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
 void main() {
   createVelvetApp()
-    ..withConfig((configManager) {
-      configManager
-        ..register<FormConfigContract>(FormConfig())
-        ..register<VelvetRouterConfigContract>(RouterConfig());
+    ..addBeforeAppStartupCallback(() {
+      container.onRegisteredForType<FormConfigContract>(() {
+        print('Some config registered');
+      });
+
+      container.onRegisteredForType<VelvetEventBusContract>(
+        () {
+          print('Event bus registered');
+        },
+      );
+
+      container.onResolvedForType<VelvetEventBusContract>(
+        (instance) {
+          print('Event bus resolved: $instance');
+        },
+      );
+
+      // container.onResolved((instance) {
+      //   print('Some instance resolved: $instance');
+      // });
     })
-    ..withPlugins((pluginManager) {
-      pluginManager
-        ..addManagerObserver(PluginManagerObserver())
-        ..addPluginObserver(PluginObserver());
+    ..addRegisterCallback(() {
+      container
+        ..registerSingleton<FormConfigContract>(FormConfig())
+        ..registerSingleton<VelvetRouterConfigContract>(RouterConfig());
     })
+    ..addPlugin(RiverpodVelvetPlugin())
+    ..addPlugin(ConnectivityVelvetPlugin())
+    ..addPlugin(FormVelvetPlugin())
     ..run();
 }

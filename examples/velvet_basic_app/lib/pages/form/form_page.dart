@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:velvet_framework/velvet_framework.dart';
-
+import 'package:form_velvet_plugin/form_velvet_plugin.dart';
 import 'package:velvet_basic_app/pages/form/hooks/use_email_input.dart';
 import 'package:velvet_basic_app/pages/form/hooks/use_name_input.dart';
+import 'package:velvet_framework/velvet_framework.dart';
 
-class FormPage extends HookConsumerWidget {
+class FormPage extends HookWidget {
   const FormPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final nameInput = useNameInput();
     final emailInput = useEmailInput();
 

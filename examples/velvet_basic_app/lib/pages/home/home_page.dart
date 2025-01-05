@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:velvet_basic_app/routing/routes.dart';
 import 'package:velvet_framework/velvet_framework.dart';
 
-import 'package:velvet_basic_app/routing/routes.dart';
-
-class HomePage extends HookConsumerWidget {
+class HomePage extends HookWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final localeSwitcher = useLocaleSwitcher();
     final translator = container.get<TranslatorContract>();
 
