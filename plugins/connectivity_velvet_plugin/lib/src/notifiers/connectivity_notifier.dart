@@ -21,9 +21,9 @@ class ConnectivityNotifier extends ChangeNotifier {
     final result = await Connectivity().checkConnectivity();
 
     if (result.contains(ConnectivityResult.none)) {
-      event(OfflineEvent());
+      dispatch(OfflineEvent());
     } else {
-      event(OnlineEvent());
+      dispatch(OnlineEvent());
     }
   }
 
