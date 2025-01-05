@@ -1,5 +1,7 @@
-import 'package:http_client_velvet_plugin/http_client_velvet_plugin.dart';
 import 'package:http_client_velvet_plugin/src/config/default_http_client_config.dart';
+import 'package:http_client_velvet_plugin/src/contracts/http_client_config_contract.dart';
+import 'package:http_client_velvet_plugin/src/velvet_http.dart';
+import 'package:http_client_velvet_plugin/src/velvet_http_config.dart';
 import 'package:velvet_framework/velvet_framework.dart';
 
 class HttpClientVelvetPlugin extends VelvetPlugin {
@@ -9,13 +11,13 @@ class HttpClientVelvetPlugin extends VelvetPlugin {
 
   @override
   void register() {
-    configManager().register<HttpClientConfigContract>(
+    container.registerSingleton<HttpClientConfigContract>(
       DefaultHttpClientConfig(),
     );
 
     container.registerLazySingleton<VelvetHttpConfig>(
       () {
-        final apiConfig = config<HttpClientConfigContract>();
+        final apiConfig = container.get<HttpClientConfigContract>();
 
         return VelvetHttpConfig(baseURL: apiConfig.baseURL);
       },
@@ -24,7 +26,7 @@ class HttpClientVelvetPlugin extends VelvetPlugin {
 
     container.registerLazySingleton<VelvetHttp>(
       () {
-        final apiConfig = config<HttpClientConfigContract>();
+        final apiConfig = container.get<HttpClientConfigContract>();
 
         final httpConfig = VelvetHttpConfig(baseURL: apiConfig.baseURL);
 
@@ -40,7 +42,7 @@ class HttpClientVelvetPlugin extends VelvetPlugin {
   }
 
   void _checkBaseURL() {
-    if (container.httpClientConfig.baseURL.isEmpty) {
+    if (container.get<HttpClientConfigContract>().baseURL.isEmpty) {
       throw Exception(
         'HTTP_CLIENT_BASE_URL is not set. Please set it in .env or provide a custom implementation of HttpClientConfigContract',
       );

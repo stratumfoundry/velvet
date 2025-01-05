@@ -1,4 +1,6 @@
 import 'package:http_client_velvet_plugin/src/http_client_velvet_plugin.dart';
+import 'package:http_client_velvet_plugin/src/velvet_http.dart';
+import 'package:http_client_velvet_plugin/src/velvet_http_config.dart';
 import 'package:velvet_framework/velvet_framework.dart';
 
 extension HttpClientOnVelvetContainerExtension on VelvetContainerContract {
