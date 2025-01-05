@@ -1,6 +1,3 @@
-import 'package:velvet_cli/src/core/container.dart';
-import 'package:velvet_cli/src/velvet_command.dart';
-import 'package:velvet_cli/src/velvet_command_handler.dart';
 import 'package:velvet_cli/velvet_cli.dart';
 
 class ListCommand extends VelvetCommand {
@@ -11,13 +8,13 @@ class ListCommand extends VelvetCommand {
   String get description => 'List all available commands';
 
   @override
-  run() {
+  Future<void> run() async {
     final commandHandler = container.get<VelvetCommandHandler>();
 
     print('');
 
     echo('-' * 80, newline: true);
-    echo('Available commands:', newline: true);
+    echo('${container.get<Pubspec>().name} commands:', newline: true);
     echo('-' * 80, newline: true);
     print('');
 
