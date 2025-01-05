@@ -1,10 +1,10 @@
-import 'package:velvet_cli/src/commands/install/install_command.dart';
 import 'package:velvet_cli/src/commands/list/list_command.dart';
-import 'package:velvet_cli/src/commands/make_route/make_route_command.dart';
-import 'package:velvet_cli/src/commands/update_cli/update_cli_command.dart';
-import 'package:velvet_cli/src/commands/update_framework/update_framework_command.dart';
 import 'package:velvet_cli/src/core/container.dart';
+import 'package:velvet_cli/src/core/velvet_args.dart';
+import 'package:velvet_cli/src/services/package_config.dart';
 import 'package:velvet_cli/src/services/pubspec.dart';
+import 'package:velvet_cli/src/services/velvet_config_manager.dart';
+import 'package:velvet_cli/src/velvet_command.dart';
 import 'package:velvet_cli/src/velvet_command_handler.dart';
 
 class VelvetCli {
@@ -13,21 +13,30 @@ class VelvetCli {
   }
 
   void _init() {
-    container.registerSingleton(Pubspec());
-    container.registerSingleton(VelvetCommandHandler(commands: [
-      InstallCommand(),
-      ListCommand(),
-      MakeRouteCommand(),
-      UpdateCliCommand(),
-      UpdateFrameworkCommand(),
-    ]));
+    container.registerLazySingleton<Pubspec>(() => Pubspec());
+
+    container.registerLazySingleton<PackageConfig>(() => PackageConfig());
+
+    container.registerLazySingleton<VelvetConfigManager>(
+      () => VelvetConfigManager(),
+    );
+
+    container.registerSingleton<VelvetCommandHandler>(VelvetCommandHandler(
+      commands: [
+        ListCommand(),
+      ],
+    ));
   }
 
-  withCommands(void Function(VelvetCommandHandler commandManager) callback) {
-    callback(container.get<VelvetCommandHandler>());
+  void addCommand(VelvetCommand command) {
+    container.get<VelvetCommandHandler>().add(command);
   }
 
   void run(List<String> arguments) {
-    container.get<VelvetCommandHandler>().handle(arguments);
+    container.registerSingleton<VelvetArgs>(
+      VelvetArgs(arguments),
+    );
+
+    container.get<VelvetCommandHandler>().handle();
   }
 }
