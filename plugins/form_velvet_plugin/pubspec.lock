@@ -254,14 +254,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  directed_graph:
-    dependency: transitive
-    description:
-      name: directed_graph
-      sha256: fcb45029b4a5089d383b79056b6716d6bf5af79b8e7dbac4b61d26af46410548
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.3"
   error_handling_velvet_plugin:
     dependency: "direct main"
     description:
@@ -277,14 +269,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  exception_templates:
-    dependency: transitive
-    description:
-      name: exception_templates
-      sha256: "517f7c770da690073663f867ee2057ae2f4ffb28edae9da9faa624aa29ac76eb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.1"
   ffi:
     dependency: transitive
     description:
@@ -404,14 +388,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.6.2"
-  go_router_builder:
-    dependency: transitive
-    description:
-      name: go_router_builder
-      sha256: "3425b72dea69209754ac6b71b4da34165dcd4d4a2934713029945709a246427a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.7.1"
   graphs:
     dependency: transitive
     description:
@@ -492,14 +468,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.9.0"
-  lazy_memo:
-    dependency: transitive
-    description:
-      name: lazy_memo
-      sha256: dcb30b4184a6d767e1d779d74ce784d752d38313b8fb4bad6b659ae7af4bb34d
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.3"
   lints:
     dependency: transitive
     description:
@@ -540,14 +508,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.1"
-  merging_builder:
-    dependency: transitive
-    description:
-      name: merging_builder
-      sha256: "174964bb6feddda113abf1b69cce9e893060427ace44f84086e0c44a5b96da5e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.7"
   meta:
     dependency: transitive
     description:
@@ -692,14 +652,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  quote_buffer:
-    dependency: transitive
-    description:
-      name: quote_buffer
-      sha256: c4cd07e55ed1b1645a1cc74278a03b2a642c9f6ea3c0528d51827fdd320acf87
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.6"
   rxdart:
     dependency: transitive
     description:
@@ -809,14 +761,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
-  source_helper:
-    dependency: transitive
-    description:
-      name: source_helper
-      sha256: "86d247119aedce8e63f4751bd9626fc9613255935558447569ad42f9f5b48b3c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.3.5"
   source_span:
     dependency: transitive
     description:
@@ -978,7 +922,7 @@ packages:
     source: hosted
     version: "2.1.4"
   velvet_annotation:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       path: "../../packages/velvet_annotation"
       relative: true
@@ -998,13 +942,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1-dev.54"
-  velvet_generator:
-    dependency: "direct dev"
-    description:
-      path: "../../packages/velvet_generator"
-      relative: true
-    source: path
-    version: "0.0.1-dev.18"
   velvet_support:
     dependency: "direct main"
     description:

@@ -11,7 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation: ^2.4.4
-  velvet_annotation: ^0.0.1-dev.9
   velvet_framework: ^0.0.1-dev.54
   velvet_support: ^0.0.1-dev.10
   error_handling_velvet_plugin: ^0.0.1-dev.1
@@ -19,15 +18,12 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.9
   freezed: ^2.5.7
-  velvet_generator: ^0.0.1-dev.18
 
   # Mandatory dependencies for make custom_lint work in monorepo
   custom_lint: ^0.6.4
   flutter_lints: ^5.0.0
   pyramid_lint: ^2.0.0
   velvet_custom_lints: ^0.0.1-dev.6
-
-flutter: null
 
 topics:
   - flutter
