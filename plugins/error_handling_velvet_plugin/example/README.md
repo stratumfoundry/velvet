@@ -1,3 +1,3 @@
-# Error Handling Plugin
+# Error Handling Velvet Plugin
 
-This plugin provides a way to handle errors in a velvet application.
+Please refer to the [Error Handling Velvet Plugin](https://velvet.stratumfoundry.com/plugins/error-handling-plugin) documentation for more information.

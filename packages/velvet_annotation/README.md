@@ -1,18 +1,13 @@
+![Velvet Banner](https://raw.githubusercontent.com/stratumfoundry/velvet/main/art/velvet-header.png "Velvet Banner")
+
 # Velvet Annotation
 
-Velvet Annotation is a package that provides a set of annotations that can be used to generate code for Velvet applications.
-
-> [!WARNING] 
-> This project is still in the early stages of development and is not yet ready for production use.
-
-## Annotations
-
-- `@velvetBootstrap`: used to generate the `bootstrap.velvet.dart` file that should be used in the main.dart file to bootstrap the application.
+Please refer to the [Velvel Annotation](https://velvet.stratumfoundry.com/packages/velvet_annotation) documentation for more information.
 
 ## Contributing
 
-If you would like to contribute to Velvet, please read the [contributing guidelines](../../CONTRIBUTING.md) before submitting a pull request.
+If you would like to contribute to Velvet, please read the [contributing guidelines](https://github.com/stratumfoundry/velvet/blob/main/CONTRIBUTING.md) before submitting a pull request.
 
 ## License
 
-Velvet is released under the [MIT License](LICENSE).
+Every velvet product (framework, plugins, etc.) is released under the [MIT License](LICENSE).

@@ -1,8 +1,8 @@
 ![Velvet Banner](https://raw.githubusercontent.com/stratumfoundry/velvet/main/art/velvet-header.png "Velvet Banner")
 
-# Http Client Velvet Plugin
+# Form Velvet Plugin
 
-Please refer to the [Http Client Velvet Plugin](https://velvet.stratumfoundry.com/plugins/http-client-plugin) documentation for more information.
+Please refer to the [Form Velvet Plugin](https://velvet.stratumfoundry.com/plugins/form-plugin) documentation for more information.
 
 ## Contributing
 

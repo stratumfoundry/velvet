@@ -1,15 +1,13 @@
-![Velvet Banner](https://raw.githubusercontent.com/dedecube/velvet/main/art/velvet-header.png "Velvet Banner")
+![Velvet Banner](https://raw.githubusercontent.com/stratumfoundry/velvet/main/art/velvet-header.png "Velvet Banner")
 
 # Splash Velvet Plugin
 
-## Documentation
-
-Find the documentation for the `splash_velvet_plugin` package at [https://velvet.dedecube.com/plugins/splash-plugin/](https://velvet.dedecube.com/plugins/splash-plugin/).
+Please refer to the [Splash Velvet Plugin](https://velvet.stratumfoundry.com/plugins/splash-plugin) documentation for more information.
 
 ## Contributing
 
-If you would like to contribute to Velvet, please read the [contributing guidelines](../../CONTRIBUTING.md) before submitting a pull request.
+If you would like to contribute to Velvet, please read the [contributing guidelines](https://github.com/stratumfoundry/velvet/blob/main/CONTRIBUTING.md) before submitting a pull request.
 
 ## License
 
-Velvet is released under the [MIT License](LICENSE).
+Every velvet product (framework, plugins, etc.) is released under the [MIT License](LICENSE).

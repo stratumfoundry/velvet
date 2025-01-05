@@ -1,17 +1,13 @@
-# Velvet Generator 
+![Velvet Banner](https://raw.githubusercontent.com/stratumfoundry/velvet/main/art/velvet-header.png "Velvet Banner")
 
-The generator works with the velvet_annotation package to generate code.
+# Velvet Generator
 
-See the example in the [velvet_annotation](https://github.com/dedecube/velvet/tree/main/packages/velvet_annotation/example/README.md) package.
-
-The generator not only exports velvet generators and builders but also wraps vendored generators and builders in build.yaml. (riverpod, freezed, go_router, json_serializable).
-
-So you can use the vendored generators and builders without adding them to your pubspec.yaml.
+Please refer to the [Velvet Generator](https://velvet.stratumfoundry.com/generator) documentation for more information.
 
 ## Contributing
 
-If you would like to contribute to Velvet, please read the [contributing guidelines](../../CONTRIBUTING.md) before submitting a pull request.
+If you would like to contribute to Velvet, please read the [contributing guidelines](https://github.com/stratumfoundry/velvet/blob/main/CONTRIBUTING.md) before submitting a pull request.
 
 ## License
 
-Velvet is released under the [MIT License](LICENSE).
+Every velvet product (framework, plugins, etc.) is released under the [MIT License](LICENSE).

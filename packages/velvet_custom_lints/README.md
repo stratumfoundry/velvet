@@ -1,17 +1,13 @@
+![Velvet Banner](https://raw.githubusercontent.com/stratumfoundry/velvet/main/art/velvet-header.png "Velvet Banner")
+
 # Velvet Custom Lints
 
-This package provides custom lints for the Velvet framework.
-
-## Lints
-
-### `one_class_per_file`
-
-This lint enforces that there is only one class per file.
+Please refer to the [Velvet Custom Lints](https://velvet.stratumfoundry.com/custom-lints) documentation for more information.
 
 ## Contributing
 
-If you would like to contribute to Velvet, please read the [contributing guidelines](../../CONTRIBUTING.md) before submitting a pull request.
+If you would like to contribute to Velvet, please read the [contributing guidelines](https://github.com/stratumfoundry/velvet/blob/main/CONTRIBUTING.md) before submitting a pull request.
 
 ## License
 
-Velvet is released under the [MIT License](LICENSE).
+Every velvet product (framework, plugins, etc.) is released under the [MIT License](LICENSE).

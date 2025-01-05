@@ -1,3 +1,3 @@
 # Velvet Framework - Example
 
-Explore examples here: [Velvet Framework Examples](https://github.com/dedecube/velvet/tree/main/examples)
+Please refer to the [Velvet Framework](https://velvet.stratumfoundry.com/packages/velvet_framework) documentation for more information.

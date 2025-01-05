@@ -1,4 +1,3 @@
-# Velvet Cli - Example
+# Velvel Annotation - Example
 
-Explore examples on [github](https://github.com/dedecube/velvet/tree/main/examples)
-and/or consult the [documentation](https://velvet.dedecube.com/digging-deeper/cli/).
+Please refer to the [Velvet CLI](https://velvet.stratumfoundry.com/packages/velvet_cli) documentation for more information.
