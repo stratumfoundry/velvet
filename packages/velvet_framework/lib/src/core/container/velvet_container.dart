@@ -20,18 +20,7 @@ class VelvetContainer extends VelvetContainerContract with ProxyToGetItMixin {
   }
 
   @override
-  T get<T extends Object>({
-    param1,
-    param2,
-    String? instanceName,
-    Type? type,
-    Type? context,
-  }) {
-    return super.get<T>(
-      param1: param1,
-      param2: param2,
-      instanceName: instanceName,
-      type: type,
-    );
+  void enableRegisteringMultipleInstancesOfOneType() {
+    getIt.enableRegisteringMultipleInstancesOfOneType();
   }
 }

@@ -1,12 +1,24 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:velvet_annotation/velvet_annotation.dart';
 import 'package:velvet_framework/src/core/container/contracts/velvet_container_contract.dart';
+import 'package:velvet_support/velvet_support.dart';
+
+typedef OnRegisteredCallback = Function(Object instance);
+typedef OnResolvedCallback = Function(Object instance);
 
 mixin ProxyToGetItMixin on VelvetContainerContract {
   @protected
   final GetIt getIt = GetIt.asNewInstance();
+
+  final ListenerManager<OnResolvedCallback> _onResolvedCallbacks =
+      ListenerManager();
+
+  @override
+  void onResolved(Function(Object instance) callback) {
+    _onResolvedCallbacks.addCallback(callback);
+  }
 
   @override
   Future<void> allReady({
@@ -26,12 +38,16 @@ mixin ProxyToGetItMixin on VelvetContainerContract {
 
   @override
   T call<T extends Object>({String? instanceName, param1, param2, Type? type}) {
-    return getIt.call<T>(
+    final instance = getIt.call<T>(
       instanceName: instanceName,
       param1: param1,
       param2: param2,
       type: type,
     );
+
+    _onResolvedCallbacks.runAllSync((callback) => callback(instance));
+
+    return instance;
   }
 
   @override
@@ -43,23 +59,32 @@ mixin ProxyToGetItMixin on VelvetContainerContract {
   }
 
   @override
-  void enableRegisteringMultipleInstancesOfOneType() {
-    getIt.enableRegisteringMultipleInstancesOfOneType();
-  }
-
-  @override
   T get<T extends Object>({param1, param2, String? instanceName, Type? type}) {
-    return getIt.get<T>(
+    final instance = getIt.get<T>(
       param1: param1,
       param2: param2,
       instanceName: instanceName,
       type: type,
     );
+
+    _onResolvedCallbacks.runAllSync((callback) => callback(instance));
+
+    return instance;
   }
 
   @override
   Iterable<T> getAll<T extends Object>({param1, param2, Type? type}) {
-    return getIt.getAll<T>(param1: param1, param2: param2, type: type);
+    final instances = getIt.getAll<T>(
+      param1: param1,
+      param2: param2,
+      type: type,
+    );
+
+    for (var instance in instances) {
+      _onResolvedCallbacks.runAllSync((callback) => callback(instance));
+    }
+
+    return instances;
   }
 
   @override
@@ -67,8 +92,18 @@ mixin ProxyToGetItMixin on VelvetContainerContract {
     param1,
     param2,
     Type? type,
-  }) {
-    return getIt.getAllAsync<T>(param1: param1, param2: param2, type: type);
+  }) async {
+    final instances = await getIt.getAllAsync<T>(
+      param1: param1,
+      param2: param2,
+      type: type,
+    );
+
+    for (var instance in instances) {
+      _onResolvedCallbacks.runAllSync((callback) => callback(instance));
+    }
+
+    return instances;
   }
 
   @override
@@ -77,13 +112,17 @@ mixin ProxyToGetItMixin on VelvetContainerContract {
     param1,
     param2,
     Type? type,
-  }) {
-    return getIt.getAsync<T>(
+  }) async {
+    final instance = await getIt.getAsync<T>(
       instanceName: instanceName,
       param1: param1,
       param2: param2,
       type: type,
     );
+
+    _onResolvedCallbacks.runAllSync((callback) => callback(instance));
+
+    return instance;
   }
 
   @override
@@ -132,7 +171,10 @@ mixin ProxyToGetItMixin on VelvetContainerContract {
 
   @override
   Future<bool> popScopesTill(String name, {bool inclusive = true}) {
-    return getIt.popScopesTill(name, inclusive: inclusive);
+    return getIt.popScopesTill(
+      name,
+      inclusive: inclusive,
+    );
   }
 
   @override
@@ -168,7 +210,10 @@ mixin ProxyToGetItMixin on VelvetContainerContract {
     FactoryFunc<T> factoryFunc, {
     String? instanceName,
   }) {
-    getIt.registerFactory<T>(factoryFunc, instanceName: instanceName);
+    getIt.registerFactory<T>(
+      factoryFunc,
+      instanceName: instanceName,
+    );
   }
 
   @override
@@ -176,7 +221,10 @@ mixin ProxyToGetItMixin on VelvetContainerContract {
     FactoryFuncAsync<T> factoryFunc, {
     String? instanceName,
   }) {
-    getIt.registerFactoryAsync<T>(factoryFunc, instanceName: instanceName);
+    getIt.registerFactoryAsync<T>(
+      factoryFunc,
+      instanceName: instanceName,
+    );
   }
 
   @override
