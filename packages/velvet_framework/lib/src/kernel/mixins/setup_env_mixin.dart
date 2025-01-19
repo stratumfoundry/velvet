@@ -4,8 +4,6 @@ import 'package:velvet_framework/src/core/env/config/dynamic_env_config.dart';
 import 'package:velvet_framework/src/core/env/contracts/env_config_contract.dart';
 import 'package:velvet_framework/src/core/env/events/env_read_event.dart';
 import 'package:velvet_framework/src/core/event/utils/listen.dart';
-import 'package:velvet_framework/src/core/utils/config.dart';
-import 'package:velvet_framework/src/core/utils/config_manager.dart';
 import 'package:velvet_framework/src/core/velvet_container.dart';
 import 'package:velvet_framework/src/kernel/contracts/kernel_contract.dart';
 
@@ -13,7 +11,7 @@ mixin SetupEnvMixin on KernelContract {
   String _envContent = '';
 
   void optOutFromEnvLoading() {
-    configManager().register<EnvConfigContract>(
+    container.registerSingleton<EnvConfigContract>(
       DynamicEnvConfig(isEnabled: false),
     );
   }
@@ -23,7 +21,7 @@ mixin SetupEnvMixin on KernelContract {
       return;
     }
 
-    if (!config<EnvConfigContract>().isEnabled) {
+    if (!container.get<EnvConfigContract>().isEnabled) {
       return;
     }
 

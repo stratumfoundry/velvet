@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:velvet_framework/src/core/utils/config.dart';
+import 'package:velvet_framework/src/core/velvet_container.dart';
 import 'package:velvet_framework/src/router/contracts/velvet_router_config_contract.dart';
 import 'package:velvet_framework/src/router/enums/router_page_transition_enum.dart';
 
@@ -16,7 +16,7 @@ mixin VelvetRoutePageBuilderMixin on GoRouteData {
       return pageTransition;
     }
 
-    return config<VelvetRouterConfigContract>().defaultPageTransition;
+    return container.get<VelvetRouterConfigContract>().defaultPageTransition;
   }
 
   @override
