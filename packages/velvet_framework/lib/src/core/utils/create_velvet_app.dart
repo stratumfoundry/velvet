@@ -1,3 +1,4 @@
+import 'package:velvet_framework/src/kernel/contracts/kernel_contract.dart';
 import 'package:velvet_framework/src/kernel/kernel.dart';
 
 /// Create a new Velvet app.
@@ -9,6 +10,6 @@ import 'package:velvet_framework/src/kernel/kernel.dart';
 ///   createVelvetApp().run();
 /// }
 /// ```
-Kernel createVelvetApp() {
+KernelContract createVelvetApp() {
   return Kernel();
 }
