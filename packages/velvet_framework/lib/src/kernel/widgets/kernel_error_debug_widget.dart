@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:velvet_framework/src/core/event/utils/event.dart';
-import 'package:velvet_framework/src/core/utils/logger.dart';
-import 'package:velvet_framework/src/hooks/use_effect_once/use_effect_once.dart';
+import 'package:velvet_framework/src/core/event/utils/dispatch.dart';
 import 'package:velvet_framework/src/kernel/events/hide_loading_widget_event.dart';
 
-class KernelErrorDebugWidget extends HookWidget {
+class KernelErrorDebugWidget extends StatefulWidget {
   const KernelErrorDebugWidget({
     super.key,
     required this.error,
@@ -16,19 +13,20 @@ class KernelErrorDebugWidget extends HookWidget {
   final StackTrace stackTrace;
 
   @override
+  State<KernelErrorDebugWidget> createState() => _KernelErrorDebugWidgetState();
+}
+
+class _KernelErrorDebugWidgetState extends State<KernelErrorDebugWidget> {
+  _KernelErrorDebugWidgetState();
+
+  @override
+  void initState() {
+    super.initState();
+    dispatch(HideLoadingWidgetEvent());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    useEffectOnce(() {
-      event(HideLoadingWidgetEvent());
-
-      logger().error(
-        error.toString(),
-        error: error,
-        stackTrace: stackTrace,
-      );
-
-      return null;
-    });
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       builder: (context, child) => Builder(
@@ -40,7 +38,7 @@ class KernelErrorDebugWidget extends HookWidget {
             title: Text(
               'Velvet | Stack'.toUpperCase(),
               style: TextStyle(
-                color: Colors.redAccent.withOpacity(0.8),
+                color: Colors.redAccent.withAlpha(200),
                 fontSize: 14,
                 letterSpacing: 1.2,
               ),
@@ -51,9 +49,9 @@ class KernelErrorDebugWidget extends HookWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(error.toString()),
+                Text(widget.error.toString()),
                 const SizedBox(height: 24),
-                Text(stackTrace.toString()),
+                Text(widget.stackTrace.toString()),
               ],
             ),
           ),
