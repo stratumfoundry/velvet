@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   connectivity_plus: ^6.0.3
+  flutter_hooks: ^0.20.5
   flutter:
     sdk: flutter
   velvet_framework: ^0.0.1-dev.54
