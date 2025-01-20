@@ -1,38 +1,61 @@
-import 'package:velvet_annotation/velvet_annotation.dart';
+import 'dart:async';
 
-import 'package:velvet_framework/src/utils/callback_manager.dart';
+import 'package:flutter/foundation.dart';
 import 'package:velvet_framework/src/kernel/contracts/kernel_contract.dart';
+import 'package:velvet_support/velvet_support.dart';
 
-typedef RegisterCallback = FutureOr Function();
+typedef RegisterCallback = FutureOr<void> Function();
 
-typedef BootCallback = FutureOr Function();
+typedef BootCallback = FutureOr<void> Function();
+
+typedef BeforeAppStartupCallback = void Function();
 
 mixin SetupContainerCompositionMixin on KernelContract {
-  final _registerCallbacks = CallbackManager<RegisterCallback>();
+  final ListenerManager<RegisterCallback> _registerCallbacks =
+      ListenerManager();
 
-  final _bootCallbacks = CallbackManager<BootCallback>();
+  final ListenerManager<BootCallback> _bootCallbacks = ListenerManager();
+
+  final ListenerManager<BeforeAppStartupCallback> _beforeAppStartupCallbacks =
+      ListenerManager();
 
   /// Register a callback to be called when the container is ready
-  void withRegister(RegisterCallback callback) {
+  @override
+  void addRegisterCallback(RegisterCallback callback) {
     throwIfRunning();
 
-    _registerCallbacks.add(callback);
+    _registerCallbacks.addCallback(callback);
   }
 
   /// Register a callback to be called when the container is booted
-  void withBoot(BootCallback callback) {
+  @override
+  void addBootCallback(BootCallback callback) {
     throwIfRunning();
 
-    _bootCallbacks.add(callback);
+    _bootCallbacks.addCallback(callback);
+  }
+
+  @override
+  void addBeforeAppStartupCallback(BeforeAppStartupCallback callback) {
+    throwIfRunning();
+
+    _beforeAppStartupCallbacks.addCallback(callback);
   }
 
   @protected
   Future<void> runRegisterCallbacks() async {
-    await _registerCallbacks.callConcurrently();
+    _registerCallbacks.runAllConcurrent((callback) async => await callback());
   }
 
   @protected
   Future<void> runBootCallbacks() async {
-    await _bootCallbacks.callConcurrently();
+    _bootCallbacks.runAllConcurrent((callback) async => await callback());
+  }
+
+  @protected
+  void runBeforeAppStartupCallbacks() {
+    _beforeAppStartupCallbacks.runAllSync(
+      (callback) => callback(),
+    );
   }
 }
