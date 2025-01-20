@@ -1,51 +1,45 @@
 import 'package:error_handling_velvet_plugin/src/helper/stack_trace_parser.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:velvet_support/velvet_support.dart';
 
-class StrackTraceParsedLineRow extends HookWidget {
+class StrackTraceParsedLineRow extends StatelessWidget {
   const StrackTraceParsedLineRow({super.key, required this.line});
 
   final StackTraceParsedLine line;
 
-  @override
-  Widget build(BuildContext context) {
-    final textWidgets = useMemoized(() {
-      final textWidgets0 = <Widget>[];
+  List<Widget> get textWidgets {
+    final textWidgets0 = <Widget>[];
 
-      for (var i = 0; i < line.functionName!.split('.').length; i++) {
+    for (var i = 0; i < line.functionName!.split('.').length; i++) {
+      textWidgets0.add(
+        Text(
+          line.functionName!.split('.')[i],
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+        ),
+      );
+
+      if (i < line.functionName!.split('.').length - 1) {
         textWidgets0.add(
-          HoverableWidget(
-            builder: (isHovered) {
-              return Text(
-                line.functionName!.split('.')[i],
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: isHovered ? Colors.blueAccent : Colors.black87,
-                  fontSize: 14,
-                ),
-              );
-            },
+          const Text(
+            '.',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+              fontSize: 14,
+            ),
           ),
         );
-
-        if (i < line.functionName!.split('.').length - 1) {
-          textWidgets0.add(
-            const Text(
-              '.',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-                fontSize: 14,
-              ),
-            ),
-          );
-        }
       }
+    }
 
-      return textWidgets0;
-    });
+    return textWidgets0;
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -96,37 +90,10 @@ class StrackTraceParsedLineRow extends HookWidget {
             // Function name on a new line
             Wrap(
               direction: Axis.horizontal,
-              children: [
-                ...textWidgets,
-              ],
+              children: textWidgets,
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class HoverableWidget extends HookWidget {
-  const HoverableWidget({
-    super.key,
-    required this.builder,
-  });
-
-  final Widget Function(bool isInteracting) builder;
-
-  @override
-  Widget build(BuildContext context) {
-    final isInteracting = useState(false);
-
-    return GestureDetector(
-      onTapDown: (details) => isInteracting.value = true,
-      onTapUp: (_) => isInteracting.value = false,
-      onTapCancel: () => isInteracting.value = false,
-      child: MouseRegion(
-        onEnter: (_) => isInteracting.value = true,
-        onExit: (_) => isInteracting.value = false,
-        child: builder(isInteracting.value),
       ),
     );
   }
