@@ -3,32 +3,26 @@ import 'dart:ui';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'package:velvet_framework/src/core/event/utils/event.dart';
-import 'package:velvet_framework/src/translation/contracts/translation_config_contract.dart';
-import 'package:velvet_framework/src/translation/contracts/translator_adapter_contract.dart';
-import 'package:velvet_framework/src/translation/contracts/translator_contract.dart';
+import 'package:velvet_framework/src/core/event/utils/dispatch.dart';
+import 'package:velvet_framework/src/core/velvet_container.dart';
+import 'package:velvet_framework/src/translation/contracts/velvet_translation_config_contract.dart';
+import 'package:velvet_framework/src/translation/contracts/velvet_translator_adapter_contract.dart';
+import 'package:velvet_framework/src/translation/contracts/velvet_translator_contract.dart';
 import 'package:velvet_framework/src/translation/events/locale_loaded_from_os.dart';
 import 'package:velvet_framework/src/translation/exceptions/locale_not_available_exception.dart';
+import 'package:velvet_framework/src/translation/mixins/interacts_with_velvet_translation_components.dart';
 import 'package:velvet_framework/src/translation/storables/locale_storable.dart';
 
-class Translator extends TranslatorContract {
-  Translator(
-    this.config,
-    this.adapter,
-  ) {
-    currentLocale = config.defaultLocale;
+class VelvetTranslator extends VelvetTranslatorContract
+    with InteractsWithVelvetTranslationComponents {
+  VelvetTranslator() {
+    currentLocale =
+        container.get<VelvetTranslationConfigContract>().defaultLocale;
 
     if (config.shouldUseOperatingSystemLocale) {
       _loadFromOS();
     }
   }
-
-  @override
-  final TranslatorAdapterContract adapter;
-
-  @override
-  final TranslationConfigContract config;
 
   final _localeStream = StreamController<Locale?>.broadcast();
 
@@ -44,8 +38,8 @@ class Translator extends TranslatorContract {
     currentLocale = locale;
     _localeStream.add(locale);
 
-    LocaleStorable().set(locale.languageCode);
-    adapter.refresh(context, locale);
+    LocaleStorable().put(locale.languageCode);
+    container.get<VelvetTranslatorAdapterContract>().refresh(context, locale);
   }
 
   // Load the locale from the operating system
@@ -61,7 +55,7 @@ class Translator extends TranslatorContract {
 
     currentLocale = locale;
 
-    event(LocaleLoadedFromOs(locale));
+    dispatch(LocaleLoadedFromOs(locale));
   }
 
   @override

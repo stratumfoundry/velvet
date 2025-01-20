@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:velvet_framework/src/translation/contracts/velvet_translator_adapter_contract.dart';
+import 'package:velvet_framework/src/translation/mixins/interacts_with_velvet_translation_components.dart';
 
-import 'package:velvet_framework/src/translation/contracts/translator_adapter_contract.dart';
-
-class FlutterI18nTranslatorAdapter extends TranslatorAdapterContract {
-  FlutterI18nTranslatorAdapter(super.config);
+class FlutterI18nTranslatorAdapter extends VelvetTranslatorAdapterContract
+    with InteractsWithVelvetTranslationComponents {
+  FlutterI18nTranslatorAdapter();
 
   @override
   LocalizationsDelegate get delegate {

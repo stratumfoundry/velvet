@@ -1,10 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:velvet_framework/src/translation/contracts/translation_config_contract.dart';
 
-abstract class TranslatorAdapterContract {
-  TranslatorAdapterContract(this.config);
-
-  final TranslationConfigContract config;
+abstract class VelvetTranslatorAdapterContract {
+  VelvetTranslatorAdapterContract();
 
   /// Returns the localizations delegate for the adapter.
   LocalizationsDelegate get delegate;

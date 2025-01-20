@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:velvet_framework/src/translation/contracts/translation_config_contract.dart';
+import 'package:velvet_framework/src/translation/contracts/velvet_translation_config_contract.dart';
 
-class DefaultTranslationConfig extends TranslationConfigContract {
+class DefaultVelvetTranslationConfig extends VelvetTranslationConfigContract {
   @override
   Locale get defaultLocale => const Locale('en');
 
