@@ -11,7 +11,7 @@ import 'package:velvet_framework/src/store/velvet_store_plugin.dart';
 import 'package:velvet_framework/src/router/velvet_router_plugin.dart';
 import 'package:velvet_framework/src/core/plugin/velvet_plugin.dart';
 
-List<VelvetPlugin> $velvetPluginLoaderItems = [
+const $velvetPluginLoaderItems = [
   VelvetEventPlugin(),
   VelvetTranslationPlugin(),
   ThemeVelvetPlugin(),
