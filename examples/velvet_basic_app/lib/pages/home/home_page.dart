@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:velvet_basic_app/routing/routes.dart';
 import 'package:velvet_framework/velvet_framework.dart';
 
@@ -7,8 +8,7 @@ class HomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localeSwitcher = useLocaleSwitcher();
-    final translator = container.get<TranslatorContract>();
+    final translator = container.get<VelvetTranslatorContract>();
 
     return Scaffold(
       body: Center(
@@ -19,18 +19,18 @@ class HomePage extends HookWidget {
               onPressed: () {
                 FormRoute().push(context);
               },
-              child: Text(context.translate('pages.home.go_to_form')),
+              child: Text(translate('pages.home.go_to_form')),
             ),
-            Text(context.translate('pages.home.title')),
+            Text(translate('pages.home.title')),
             ElevatedButton(
               onPressed: () {
                 if (translator.currentLocale == const Locale('en')) {
-                  localeSwitcher(const Locale('it'));
+                  translator.setLocale(context, const Locale('it'));
                 } else {
-                  localeSwitcher(const Locale('en'));
+                  translator.setLocale(context, const Locale('en'));
                 }
               },
-              child: Text(context.translate('pages.home.switch')),
+              child: Text(translate('pages.home.switch')),
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:form_velvet_plugin/form_velvet_plugin.dart';
 import 'package:velvet_basic_app/pages/form/hooks/use_email_input.dart';
 import 'package:velvet_basic_app/pages/form/hooks/use_name_input.dart';
@@ -22,7 +23,7 @@ class FormPage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.translate('pages.form.title')),
+        title: Text(translate('pages.form.title')),
       ),
       body: Center(
         child: Form(
@@ -33,7 +34,7 @@ class FormPage extends HookWidget {
                 controller: nameInput.controller,
                 decoration: InputDecoration(
                   errorText: nameInput.error.value,
-                  labelText: context.translate('pages.form.name'),
+                  labelText: translate('pages.form.name'),
                 ),
               ),
               TextFormField(
@@ -41,23 +42,21 @@ class FormPage extends HookWidget {
                 controller: emailInput.controller,
                 decoration: InputDecoration(
                   errorText: emailInput.error.value,
-                  labelText: context.translate('pages.form.email'),
+                  labelText: translate('pages.form.email'),
                 ),
               ),
               ElevatedButton(
                 onPressed: form.submit,
                 // onPressed: () => throw ExampleException('Error'),
-                child: Text(context.translate('pages.form.submit')),
+                child: Text(translate('pages.form.submit')),
               ),
               Text(
                 form.isSubmitting.value
-                    ? context.translate('pages.form.is_submitting')
+                    ? translate('pages.form.is_submitting')
                     : '',
               ),
               Text(
-                form.isValid.value
-                    ? ''
-                    : context.translate('pages.form.is_invalid'),
+                form.isValid.value ? '' : translate('pages.form.is_invalid'),
               ),
             ],
           ),
