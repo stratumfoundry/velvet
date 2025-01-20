@@ -1,4 +1,4 @@
-import 'package:velvet_framework/src/translation/translate.dart';
+import 'package:velvet_framework/src/translation/utils/translate.dart';
 import 'package:velvet_framework/src/validation/velvet_rule.dart';
 
 /// A validation rule for email addresses.

@@ -1,4 +1,4 @@
-import 'package:velvet_framework/src/translation/translate.dart';
+import 'package:velvet_framework/src/translation/utils/translate.dart';
 import 'package:velvet_framework/src/validation/velvet_rule.dart';
 
 /// This rule is used to enforce a maximum length constraint on a string value. If the length of the value exceeds the specified maximum length,

@@ -1,7 +1,6 @@
-import 'package:velvet_framework/src/translation/translate.dart';
+import 'package:velvet_framework/src/translation/utils/translate.dart';
 import 'package:velvet_framework/src/validation/velvet_rule.dart';
 
-/// FIXME[epic=get-it] - should be injected
 /// A validation rule that checks if the length of a string is fixed.
 ///
 /// This rule is used to ensure that a string has a specific length.
