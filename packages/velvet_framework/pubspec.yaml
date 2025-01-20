@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.1.0 # Used only in dev environment
-  flutter_hooks: ^0.20.5
   flutter_i18n: ^0.35.1
   flutter_localizations:
     sdk: flutter
