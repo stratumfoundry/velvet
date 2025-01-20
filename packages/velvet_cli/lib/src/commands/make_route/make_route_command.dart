@@ -1,14 +1,12 @@
 import 'dart:io';
 
 import 'package:dcli/dcli.dart';
-import 'package:velvet_cli/src/core/container.dart';
 import 'package:velvet_cli/src/dcli/resource/generated/resource_registry.g.dart';
 import 'package:velvet_cli/src/extensions/decode_on_package_resource.dart';
 import 'package:velvet_cli/src/extensions/name_parts_on_string.dart';
 import 'package:velvet_cli/src/mixins/import_finder.dart';
 import 'package:velvet_cli/src/mixins/part_finder.dart';
 import 'package:velvet_cli/src/mixins/writer.dart';
-import 'package:velvet_cli/src/services/pubspec.dart';
 import 'package:velvet_cli/src/velvet_command.dart';
 import 'package:velvet_support/velvet_support.dart';
 
@@ -20,7 +18,7 @@ class MakeRouteCommand extends VelvetCommand
   @override
   String get description => 'Creates a new route file.';
 
-  static const routesPath = 'lib/presentation/routes.dart';
+  static const routesPath = 'lib/routing/routes.dart';
 
   String _composeRoutePath(String name) {
     final nameParts = name.nameParts();
@@ -78,8 +76,10 @@ class MakeRouteCommand extends VelvetCommand
       routesLines.insert(indexOfLastPartLine(routesLines), partLine);
     }
 
-    final importLine =
-        "import 'package:${container.get<Pubspec>().name}/presentation/pages/${routeParts.path}/${routeParts.basename}_page.dart';";
+    final importLine = addLocalImport(
+      'presentation/pages/${routeParts.path}/${routeParts.basename}_page.dart',
+    );
+
     if (!routesLines.contains(importLine)) {
       routesLines.insert(indexOfLastImportLine(routesLines), importLine);
     }

@@ -6,15 +6,16 @@ import 'package:velvet_cli/src/core/container.dart';
 import 'package:velvet_cli/src/resources/package_config_resource.dart';
 import 'package:velvet_cli/src/resources/velvet_yaml_resource.dart';
 import 'package:velvet_cli/src/services/package_config.dart';
+import 'package:velvet_cli/src/services/velvet_config_manager.dart';
 import 'package:velvet_cli/src/services/velvet_yaml.dart';
-import 'package:velvet_cli/src/utils/container_shortcuts.dart';
 import 'package:yaml/yaml.dart';
 
 class VelvetPluginDiscover {
   VelvetPluginDiscover();
 
   Future<List<VelvetYaml>> discover() async {
-    await Future.wait(packageConfig.resource.packages.map((package) async {
+    await Future.wait(
+        container.get<PackageConfig>().resource.packages.map((package) async {
       try {
         final velvetYamlPath = await resolveVelvetYamlFile(package);
 
@@ -24,11 +25,11 @@ class VelvetPluginDiscover {
           final json = jsonEncode(yamlMap);
           final map = jsonDecode(json);
 
-          velvetConfigManager.addConfig(
-            VelvetYaml(
-              velvetYamlResource: VelvetYamlResource.fromJson(map),
-            ),
-          );
+          container.get<VelvetConfigManager>().addConfig(
+                VelvetYaml(
+                  velvetYamlResource: VelvetYamlResource.fromJson(map),
+                ),
+              );
         }
       } catch (e, stackTrace) {
         print('Error processing package ${package.name}: $e');
@@ -38,7 +39,7 @@ class VelvetPluginDiscover {
       return null;
     }));
 
-    return velvetConfigManager.configs;
+    return container.get<VelvetConfigManager>().configs;
   }
 
   Future<String?> resolveVelvetYamlFile(
