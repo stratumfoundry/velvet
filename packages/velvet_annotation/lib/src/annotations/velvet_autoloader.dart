@@ -22,11 +22,10 @@ class VelvetAutoloader {
   const VelvetAutoloader({
     required this.glob,
     this.type,
+    this.factory,
   });
 
-  /// The file glob pattern for the files to be autoloaded.
   final String glob;
-
-  /// The type of the autoloaded element from files.
   final Type? type;
+  final String? factory;
 }

@@ -12,42 +12,47 @@ class AutoloaderGenerator extends GeneratorForAnnotation<VelvetAutoloader> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
-    var imports = <String>[];
-    var classNames = <String>[];
+    final imports = <String>{};
+    final classInstances = <String>[];
 
-    DartType? type;
+    final globPattern = annotation.read('glob').stringValue;
+    final type = annotation.read('type').isType
+        ? annotation.read('type').typeValue
+        : null;
+    final factory = annotation.read('factory').isNull
+        ? null
+        : annotation.read('factory').stringValue;
 
-    var glob = annotation.read('glob').stringValue;
+    final assets = buildStep.findAssets(Glob(globPattern));
 
-    if (annotation.read('type').isType) {
-      type = annotation.read('type').typeValue;
-    }
-
-    await for (final input in buildStep.findAssets(Glob(glob))) {
+    await for (final input in assets) {
       final library = await buildStep.resolver.libraryFor(input);
+      final reader = LibraryReader(library);
 
-      if (type != null) {
-        var classesInLibrary =
-            LibraryReader(library).allElements.whereType<ClassElement>().where(
-                  (c) => c.allSupertypes.any((t) => type!.element == t.element),
-                );
-
-        if (classesInLibrary.isNotEmpty) {
-          classNames.addAll(classesInLibrary.map((c) => c.name));
-          imports.add("import '${input.uri}';");
+      for (var classElement in reader.classes) {
+        if (type != null && !_isSubtypeOf(classElement, type)) {
+          continue;
         }
-      } else {
-        var classesInLibrary =
-            LibraryReader(library).allElements.whereType<ClassElement>();
 
-        if (classesInLibrary.isNotEmpty) {
-          classNames.addAll(classesInLibrary.map((c) => c.name));
-          imports.add("import '${input.uri}';");
+        if (!_hasDefaultConstructor(classElement)) {
+          log.warning(
+            'Class ${classElement.name} in ${input.uri} has no default constructor.',
+          );
+          continue;
         }
+
+        imports.add("import '${input.uri}';");
+
+        // Apply the factory function if provided
+        final factoryInstance = factory != null
+            ? factory.replaceAll('\$class', classElement.name)
+            : '${classElement.name}()';
+
+        classInstances.add(factoryInstance);
       }
     }
 
-    // Add import of the type of annotation
+    // Include type import
     if (type != null) {
       imports.add("import '${type.element!.source!.uri}';");
     }
@@ -55,9 +60,19 @@ class AutoloaderGenerator extends GeneratorForAnnotation<VelvetAutoloader> {
     return '''
 ${imports.join('\n')}
 
-List<${type != null ? type.toString() : 'dynamic'}> \$${element.name}Items = [
-    ${classNames.map((c) => '$c()').join(',\n')}
-  ];
+const \$${element.name}Items = [
+  ${classInstances.join(',\n  ')}
+];
 ''';
+  }
+
+  bool _isSubtypeOf(ClassElement classElement, DartType type) {
+    return classElement.allSupertypes
+        .any((supertype) => supertype.element == type.element);
+  }
+
+  bool _hasDefaultConstructor(ClassElement classElement) {
+    return classElement.constructors
+        .any((constructor) => constructor.parameters.isEmpty);
   }
 }
