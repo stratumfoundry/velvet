@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:velvet_framework/src/core/plugin/velvet_plugin.dart';
-import 'package:velvet_framework/src/core/utils/config.dart';
 import 'package:velvet_framework/src/core/utils/navigator_key.dart';
 import 'package:velvet_framework/src/core/velvet_container.dart';
 import 'package:velvet_framework/src/router/contracts/velvet_router_config_contract.dart';
@@ -14,7 +13,7 @@ class VelvetRouterPlugin extends VelvetPlugin {
   @override
   void register() {
     container.registerLazySingleton<VelvetRouterContract>(() {
-      final routingConfig = config<VelvetRouterConfigContract>();
+      final routingConfig = container.get<VelvetRouterConfigContract>();
 
       return GoRouter(
         errorBuilder: routingConfig.routerErrorBuilder,

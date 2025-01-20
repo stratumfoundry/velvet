@@ -1,4 +1,4 @@
-import 'package:velvet_annotation/velvet_annotation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:velvet_framework/src/core/logger/config/default_velvet_logger_config.dart';
 import 'package:velvet_framework/src/core/logger/contracts/velvet_logger_config_contract.dart';
 import 'package:velvet_framework/src/core/logger/contracts/velvet_logger_contract.dart';

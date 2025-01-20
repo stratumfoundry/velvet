@@ -1,25 +1,22 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:velvet_framework/velvet_framework.dart';
 
-@GenerateNiceMocks([
-  MockSpec<VelvetConfigManagerContract>(),
-  MockSpec<EnvConfigContract>(),
-  MockSpec<VelvetEventBusContract>(),
-  MockSpec<VelvetLoggerContract>(),
-])
-import 'use_load_env_on_reassemble_test.mocks.dart';
+import '../../../mocks/mocks.mocks.dart';
 
 class MockAssetBundle extends Mock implements AssetBundle {}
 
 Element _rootOf(Element element) {
   late Element root;
+
   element.visitAncestorElements((e) {
     root = e;
+
     return true;
   });
+
   return root;
 }
 
@@ -30,7 +27,6 @@ void hotReload(WidgetTester tester) {
 }
 
 void main() {
-  late MockVelvetConfigManagerContract mockConfigManager;
   late MockEnvConfigContract mockEnvConfig;
   late MockVelvetEventBusContract mockEventBus;
   late MockVelvetLoggerContract mockLogger;
@@ -40,19 +36,17 @@ void main() {
     provideDummy<EnvConfigContract>(MockEnvConfigContract());
 
     mockBundle = MockAssetBundle();
-    mockConfigManager = MockVelvetConfigManagerContract();
     mockEnvConfig = MockEnvConfigContract();
     mockEventBus = MockVelvetEventBusContract();
     mockLogger = MockVelvetLoggerContract();
 
-    container.registerSingleton<VelvetConfigManagerContract>(mockConfigManager);
     container.registerSingleton<EnvConfigContract>(mockEnvConfig);
     container.registerSingleton<VelvetEventBusContract>(mockEventBus);
     container.registerSingleton<VelvetLoggerContract>(mockLogger);
 
     when(mockBundle.loadString('.env')).thenAnswer((_) async => 'KEY=VALUE');
 
-    when(mockConfigManager.get<EnvConfigContract>()).thenReturn(mockEnvConfig);
+    when(container.get<EnvConfigContract>()).thenReturn(mockEnvConfig);
   });
 
   testWidgets(
