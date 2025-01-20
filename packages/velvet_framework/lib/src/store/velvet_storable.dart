@@ -1,6 +1,5 @@
 import 'package:velvet_framework/src/core/velvet_container.dart';
 import 'package:velvet_framework/src/store/contracts/velvet_store_contract.dart';
-import 'package:velvet_framework/src/store/extensions/velvet_store_on_container_extension.dart';
 
 /// Create resusable storable data
 ///
@@ -65,18 +64,24 @@ import 'package:velvet_framework/src/store/extensions/velvet_store_on_container_
 ///   get key => _key;
 /// }
 /// ```
-abstract class VelvetStorable<T> {
-  String get key;
+class VelvetStorable<T> {
+  VelvetStorable({
+    required this.token,
+  });
 
-  Future<T?> get({T? defaultValue});
+  final String token;
 
-  Future<void> set(T data);
-
-  Future<void> remove() async {
-    return store.simple.remove(key);
+  Future<T?> get({T? defaultValue}) {
+    return container
+        .get<VelvetStoreContract>()
+        .get(token, defaultValue: defaultValue);
   }
 
-  VelvetStoreContract get store {
-    return container.store();
+  Future<void> put(T data) {
+    return container.get<VelvetStoreContract>().put(token, data);
+  }
+
+  Future<void> remove() async {
+    return container.get<VelvetStoreContract>().remove(token);
   }
 }
