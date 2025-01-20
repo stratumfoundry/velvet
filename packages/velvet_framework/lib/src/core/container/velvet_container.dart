@@ -11,12 +11,15 @@ class VelvetContainer extends VelvetContainerContract with ProxyToGetItMixin {
   }
 
   @override
-  void requireRegistrationOf<T extends Object>({String? instanceName}) {
+  void requireRegistrationOf<T extends Object>({
+    String? instanceName,
+    String? instructions,
+  }) {
     if (isRegistered<T>(instanceName: instanceName)) {
       return;
     }
 
-    throw Exception('Registration of type $T is required.');
+    throw Exception('Registration of type $T is required. $instructions');
   }
 
   @override
