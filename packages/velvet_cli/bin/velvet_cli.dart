@@ -6,7 +6,5 @@ void main(List<String> arguments) {
     ..addCommand(MakeRouteCommand())
     ..addCommand(PluginDiscoveryCommand())
     ..addCommand(PubCommand())
-    ..addCommand(UpdateCliCommand())
-    ..addCommand(UpdateFrameworkCommand())
     ..run(arguments);
 }
