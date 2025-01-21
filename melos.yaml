@@ -6,8 +6,27 @@ command:
   version:
     hooks:
       pre: |
-        npx vscode-generate-index-standalone packages/velvet_framework/lib/
-        cd ./packages/velvet_framework && dart pub run build_runner build --delete-conflicting-outputs
+        (
+          npx vscode-generate-index-standalone packages/velvet_annotation/lib/velvet_annotation.dart &
+          npx vscode-generate-index-standalone packages/velvet_cli/lib/velvet_cli.dart &
+          npx vscode-generate-index-standalone packages/velvet_custom_lints/lib/velvet_custom_lints.dart &
+          npx vscode-generate-index-standalone packages/velvet_framework/lib/velvet_framework.dart &
+          npx vscode-generate-index-standalone packages/velvet_generator/lib/velvet_generator.dart &
+          npx vscode-generate-index-standalone packages/velvet_support/lib/velvet_support.dart &
+          npx vscode-generate-index-standalone plugins/connectivity_velvet_plugin/lib/connectivity_velvet_plugin.dart &
+          npx vscode-generate-index-standalone plugins/dev_panel_velvet_plugin/lib/dev_panel_velvet_plugin.dart &
+          npx vscode-generate-index-standalone plugins/error_handling_velvet_plugin/lib/error_handling_velvet_plugin.dart &
+          npx vscode-generate-index-standalone plugins/form_velvet_plugin/lib/form_velvet_plugin.dart &
+          npx vscode-generate-index-standalone plugins/http_client_velvet_plugin/lib/http_client_velvet_plugin.dart &
+          npx vscode-generate-index-standalone plugins/riverpod_velvet_plugin/lib/riverpod_velvet_plugin.dart &
+          npx vscode-generate-index-standalone plugins/splash_velvet_plugin/lib/splash_velvet_plugin.dart &
+          cd ./packages/velvet_cli && dart pub run build_runner build --delete-conflicting-outputs &
+          cd ./packages/velvet_framework && dart pub run build_runner build --delete-conflicting-outputs &
+          cd ./packages/velvet_generator && dart pub run build_runner build --delete-conflicting-outputs &
+          cd ./packages/velvet_support && dart pub run build_runner build --delete-conflicting-outputs &
+          cd ./plugins/form_velvet_plugin && dart pub run build_runner build --delete-conflicting-outputs &
+          wait
+        )
 
 packages:
   - examples/*
