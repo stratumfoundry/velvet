@@ -1,11 +1,18 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:velvet_framework/src/kernel/exceptions/kernel_is_already_running_exception.dart';
-import 'package:velvet_framework/src/kernel/widgets/kernel_error_widget.dart';
 import 'package:velvet_framework/src/kernel/widgets/kernel_loading_widget.dart';
 
+typedef KernelErrorWidgetBuilder = Widget Function(
+  Object error,
+  StackTrace stackTracke,
+  FutureOr<void> Function() onRetry,
+);
+
 abstract class KernelContract {
-  KernelErrorWidget? errorWidget;
+  KernelErrorWidgetBuilder? errorWidget;
   KernelLoadingWidget? loadingWidget;
 
   /// Indicates if the kernel is running
@@ -42,7 +49,7 @@ abstract class KernelContract {
   /// If not set, the default error widget will be used
   ///
   /// IMPORTANT: The widget must return a MaterialApp at its root
-  void usingError(KernelErrorWidget errorWidget);
+  void usingError(KernelErrorWidgetBuilder errorWidgetBuilder);
 
   /// Set the initialization's loading widget of the application
   /// If not set, the default loading widget will be used

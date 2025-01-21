@@ -4,9 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:velvet_framework/src/core/env/hooks/use_load_env_on_reassemble.dart';
 import 'package:velvet_framework/src/core/event/hooks/use_event_listener.dart';
+import 'package:velvet_framework/src/kernel/contracts/kernel_contract.dart';
 import 'package:velvet_framework/src/kernel/events/hide_loading_widget_event.dart';
 import 'package:velvet_framework/src/kernel/widgets/kernel_app_widget.dart';
-import 'package:velvet_framework/src/kernel/widgets/kernel_error_debug_widget.dart';
 import 'package:velvet_framework/src/kernel/widgets/kernel_error_widget.dart';
 import 'package:velvet_framework/src/kernel/widgets/kernel_loading_widget.dart';
 
@@ -19,7 +19,7 @@ class KernelWidget extends HookConsumerWidget {
   });
 
   final FutureProvider<void> appStartupProvider;
-  final KernelErrorWidget? errorWidget;
+  final KernelErrorWidgetBuilder? errorWidget;
   final KernelLoadingWidget? loadingWidget;
 
   @override
@@ -42,17 +42,15 @@ class KernelWidget extends HookConsumerWidget {
           appStartupState.when(
             loading: () => const SizedBox(),
             error: (error, stackTrace) {
-              if (kDebugMode) {
-                return KernelErrorDebugWidget(
-                  error: error,
-                  stackTrace: stackTrace,
-                );
-              } else {
-                return errorWidget ??
-                    KernelErrorWidget(
+              return errorWidget != null
+                  ? errorWidget!(
+                      error,
+                      stackTrace,
+                      () => ref.refresh(appStartupProvider),
+                    )
+                  : KernelErrorWidget(
                       onRetry: () => ref.refresh(appStartupProvider),
                     );
-              }
             },
             data: (_) => const KernelAppWidget(),
           ),
