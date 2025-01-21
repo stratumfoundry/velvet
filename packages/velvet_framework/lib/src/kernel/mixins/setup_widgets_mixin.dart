@@ -1,5 +1,4 @@
 import 'package:velvet_framework/src/kernel/contracts/kernel_contract.dart';
-import 'package:velvet_framework/src/kernel/widgets/kernel_error_widget.dart';
 import 'package:velvet_framework/src/kernel/widgets/kernel_loading_widget.dart';
 
 mixin SetupWidgetsMixin on KernelContract {
@@ -8,7 +7,7 @@ mixin SetupWidgetsMixin on KernelContract {
   ///
   /// NOTE: The widget must return a MaterialApp at its root
   @override
-  void usingError(KernelErrorWidget errorWidget) {
+  void usingError(KernelErrorWidgetBuilder errorWidget) {
     throwIfRunning();
 
     this.errorWidget = errorWidget;
