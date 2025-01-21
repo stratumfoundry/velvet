@@ -1,0 +1,19 @@
+type: plugin
+name: connectivity_velvet_plugin
+
+providers:
+  - name: ConnectivityVelvetPlugin
+    token: ConnectivityVelvetPlugin
+    relative_path: ./lib/src/connectivity_velvet_plugin.dart
+
+configs: 
+  - name: default
+    contract:
+      token: ConnectivityConfigContract
+      relative_path: ./lib/src/configs/connectivity_config_contract.dart
+    create_as:
+      token: ConnectivityConfig
+      
+commands:
+  - token: ConnectivityCommand
+    relative_path: ./lib/src/commands/connectivity_command.dart
