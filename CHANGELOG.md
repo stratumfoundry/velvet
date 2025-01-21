@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-01-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`velvet_framework` - `v0.0.1-dev.55`](#velvet_framework---v001-dev55)
+ - [`http_client_velvet_plugin` - `v0.0.1-dev.4`](#http_client_velvet_plugin---v001-dev4)
+ - [`splash_velvet_plugin` - `v0.0.1-dev.19`](#splash_velvet_plugin---v001-dev19)
+ - [`connectivity_velvet_plugin` - `v0.0.1-dev.4`](#connectivity_velvet_plugin---v001-dev4)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `http_client_velvet_plugin` - `v0.0.1-dev.4`
+ - `splash_velvet_plugin` - `v0.0.1-dev.19`
+ - `connectivity_velvet_plugin` - `v0.0.1-dev.4`
+
+---
+
+#### `velvet_framework` - `v0.0.1-dev.55`
+
+ - **FEAT**: trasform KernelErrorWidget to builder function that accept also refresh function. ([c9aac281](https://github.com/dedecube/velvet/commit/c9aac28104183966143c3d87ebafcc851c6ecbda))
+
+
 ## 2024-12-04
 
 ### Changes

@@ -1,3 +1,7 @@
+## 0.0.1-dev.55
+
+ - **FEAT**: trasform KernelErrorWidget to builder function that accept also refresh function. ([c9aac281](https://github.com/dedecube/velvet/commit/c9aac28104183966143c3d87ebafcc851c6ecbda))
+
 ## 0.0.1-dev.54
 
  - **FIX**(http): VelvetHttp and VelvetHttpRequest are now coordinated to built a safe url joining baseUrl and path. ([56a33410](https://github.com/dedecube/velvet/commit/56a33410a786b6455c0bfa69923e8ffcd47d90fa))
