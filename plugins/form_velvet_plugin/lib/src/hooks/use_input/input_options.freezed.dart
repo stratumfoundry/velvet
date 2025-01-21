@@ -22,7 +22,9 @@ mixin _$InputOptions {
   bool get shouldClearErrorOnChange => throw _privateConstructorUsedError;
   bool get shouldTrim => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputOptionsCopyWith<InputOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$InputOptionsCopyWithImpl<$Res, $Val extends InputOptions>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$InputOptionsImplCopyWithImpl<$Res>
       _$InputOptionsImpl _value, $Res Function(_$InputOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,7 +175,9 @@ class _$InputOptionsImpl implements _InputOptions {
   @JsonKey()
   final bool shouldTrim;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputOptionsImplCopyWith<_$InputOptionsImpl> get copyWith =>
@@ -194,8 +202,11 @@ abstract class _InputOptions implements InputOptions {
   bool get shouldClearErrorOnChange;
   @override
   bool get shouldTrim;
+
+  /// Create a copy of InputOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputOptionsImplCopyWith<_$InputOptionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
