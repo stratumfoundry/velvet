@@ -1,7 +1,8 @@
 {
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit",
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
+    "source.dcm.fixAll": "explicit"
   },
   "files.exclude": {
     "**/.git": true,
@@ -36,8 +37,8 @@
     "/build": true,
     "**/fastlane": true
   },
-  "dart.flutterSdkPath": ".fvm/versions/3.22.2",
-  "dart.sdkPath": ".fvm/versions/3.22.1",
+  "dart.flutterSdkPath": ".fvm/versions/3.27.1",
+  "dart.sdkPath": ".fvm/versions/3.27.1",
   "dart.runPubGetOnNestedProjects": "none",
   "dart.runPubGetOnPubspecChanges": "never",
   "[json]": {
@@ -52,19 +53,19 @@
     {
       "globMatch": "**/assets/**",
       "command": "flutter.hotReload",
-      "runIn": "vscode",
+      "runIn": "vscode"
     },
     {
       "globMatch": "**/pubspec.yaml",
       "command": "fvm dart run melos bootstrap",
       "runIn": "terminal",
-      "commandBeforeSaving": "cd ${workspaceFolder}",
+      "commandBeforeSaving": "cd ${workspaceFolder}"
     },
     {
       "globMatch": "packages/velvet_cli/resource/**",
       "command": "dcli pack",
       "runIn": "terminal",
-      "commandBeforeSaving": "cd ${workspaceFolder}/packages/velvet_cli",
+      "commandBeforeSaving": "cd ${workspaceFolder}/packages/velvet_cli"
     }
   ]
 }
