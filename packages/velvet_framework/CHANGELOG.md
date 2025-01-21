@@ -1,3 +1,7 @@
+## 0.0.1-dev.56
+
+ - **FIX**: update usingError in SetupWidgetsMixin. ([8b9d074d](https://github.com/dedecube/velvet/commit/8b9d074db86b03f5cacce5e6c26f6fc58cc87214))
+
 ## 0.0.1-dev.55
 
  - **FEAT**: trasform KernelErrorWidget to builder function that accept also refresh function. ([c9aac281](https://github.com/dedecube/velvet/commit/c9aac28104183966143c3d87ebafcc851c6ecbda))

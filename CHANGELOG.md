@@ -15,6 +15,38 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`velvet_framework` - `v0.0.1-dev.56`](#velvet_framework---v001-dev56)
+ - [`connectivity_velvet_plugin` - `v0.0.1-dev.5`](#connectivity_velvet_plugin---v001-dev5)
+ - [`splash_velvet_plugin` - `v0.0.1-dev.20`](#splash_velvet_plugin---v001-dev20)
+ - [`http_client_velvet_plugin` - `v0.0.1-dev.5`](#http_client_velvet_plugin---v001-dev5)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `connectivity_velvet_plugin` - `v0.0.1-dev.5`
+ - `splash_velvet_plugin` - `v0.0.1-dev.20`
+ - `http_client_velvet_plugin` - `v0.0.1-dev.5`
+
+---
+
+#### `velvet_framework` - `v0.0.1-dev.56`
+
+ - **FIX**: update usingError in SetupWidgetsMixin. ([8b9d074d](https://github.com/dedecube/velvet/commit/8b9d074db86b03f5cacce5e6c26f6fc58cc87214))
+
+
+## 2025-01-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`velvet_framework` - `v0.0.1-dev.55`](#velvet_framework---v001-dev55)
  - [`http_client_velvet_plugin` - `v0.0.1-dev.4`](#http_client_velvet_plugin---v001-dev4)
  - [`splash_velvet_plugin` - `v0.0.1-dev.19`](#splash_velvet_plugin---v001-dev19)
