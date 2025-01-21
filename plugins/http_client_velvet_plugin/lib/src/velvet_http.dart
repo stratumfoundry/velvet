@@ -71,8 +71,10 @@ class VelvetHttp {
     );
 
     if (httpRequest is HandlesResponse) {
-      return (httpRequest as HandlesResponse<Parsed, Raw>)
-          .handle(_dioInstance, requestOptions);
+      return (httpRequest as HandlesResponse<Parsed, Raw>).handle(
+        _dioInstance,
+        requestOptions,
+      );
     }
 
     final response = await _dioInstance.request<Raw>(

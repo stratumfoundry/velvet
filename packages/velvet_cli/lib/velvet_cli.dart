@@ -24,6 +24,6 @@ export './src/services/pubspec.dart';
 export './src/services/velvet_config_manager.dart';
 export './src/services/velvet_plugin_discover.dart';
 export './src/services/velvet_yaml.dart';
-export './src/velvet_command.dart';
 export './src/velvet_command_handler.dart';
+export './src/velvet_command.dart';
 // @endindex
