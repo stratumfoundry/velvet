@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_dynamic, avoid-dynamic
 import 'package:velvet_framework/src/core/logger/velvet_logger_channel.dart';
 
-abstract interface class VelvetLoggerContract {
+abstract class VelvetLoggerContract {
   void info(
     dynamic message, {
     Object? error,
