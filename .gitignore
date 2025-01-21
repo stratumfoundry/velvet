@@ -39,3 +39,6 @@ pubspec_overrides.yaml
 
 # FVM Version Cache
 .fvm/
+
+# Test coverage
+**/coverage/
