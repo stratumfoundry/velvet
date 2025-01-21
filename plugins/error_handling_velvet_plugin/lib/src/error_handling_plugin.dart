@@ -1,21 +1,16 @@
-import 'package:error_handling_velvet_plugin/src/config/default_error_handling_config.dart';
 import 'package:error_handling_velvet_plugin/src/contracts/error_handling_config_contract.dart';
-import 'package:error_handling_velvet_plugin/src/renderable_exception.dart';
+import 'package:error_handling_velvet_plugin/src/interfaces/renderable_exception.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velvet_framework/velvet_framework.dart';
 
 class ErrorHandlingPlugin extends VelvetPlugin {
   @override
-  void register() {
-    container.registerSingleton<ErrorHandlingConfigContract>(
-      DefaultErrorHandlingConfig(),
-    );
-  }
-
-  @override
   void boot() {
-    WidgetsFlutterBinding.ensureInitialized();
+    if (kDebugMode) {
+      container.requireRegistrationOf<ErrorHandlingConfigContract>(
+        instructions: 'Create your own or use the DefaultErrorHandlingConfig.',
+      );
+    }
 
     FlutterError.onError = (FlutterErrorDetails details) {
       final exception = details.exception;
