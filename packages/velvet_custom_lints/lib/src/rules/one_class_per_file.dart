@@ -16,6 +16,8 @@ class OneClassPerFile extends DartLintRule {
     CustomLintContext context,
   ) {
     int classCount = 0;
+    bool hasStatefulWidget = false;
+    bool hasStateClass = false;
 
     context.registry.addClassDeclaration((node) {
       final element = node.declaredElement;
@@ -26,8 +28,27 @@ class OneClassPerFile extends DartLintRule {
 
       classCount++;
 
+      // Check if the class is a StatefulWidget or a State class
+      if (node.name.toString().endsWith('State') &&
+          node.name.toString() != 'State') {
+        hasStateClass = true;
+      } else if (node.name.toString().endsWith('Widget') &&
+          node.name.toString() != 'Widget') {
+        hasStatefulWidget = true;
+      }
+
+      // If we have both a StatefulWidget and its corresponding State class, allow it.
+      if (hasStatefulWidget && hasStateClass) {
+        // If both classes exist, don't apply the rule
+        if (classCount > 2) {
+          reporter.atNode(node, code);
+        }
+        return;
+      }
+
+      // Otherwise, ensure that only one class is allowed in the file.
       if (classCount > 1) {
-        reporter.reportErrorForElement(code, element);
+        reporter.atNode(node, code);
       }
     });
   }
