@@ -4,7 +4,7 @@ version: 0.0.1-dev.18
 homepage: https://github.com/stratumfoundry/velvet/tree/main/plugins/http_client_velvet_plugin
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ">=3.6.0 <4.0.0"
   flutter: ">=3.0.0"
 
 dependencies:
@@ -14,10 +14,8 @@ dependencies:
   flutter_native_splash: ^2.4.1
 
 dev_dependencies:
-  # Mandatory dependencies for make custom_lint work in monorepo
-  custom_lint: ^0.6.4
+  custom_lint: ^0.7.1
   flutter_lints: ^5.0.0
-  pyramid_lint: ^2.0.0
   velvet_custom_lints: ^0.0.1-dev.6
 
 topics:
