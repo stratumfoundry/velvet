@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/error/error.dart' hide LintCode;
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
@@ -9,6 +10,7 @@ class AvoidStringLiteralsInsideTextWidget extends DartLintRule {
     name: 'velvet_avoid_string_literals_inside_text_widget',
     problemMessage:
         'Avoid using string literals inside Text widget. Use context.translate instead.',
+    errorSeverity: ErrorSeverity.WARNING,
   );
 
   @override
@@ -25,7 +27,7 @@ class AvoidStringLiteralsInsideTextWidget extends DartLintRule {
         final firstArgument = node.argumentList.arguments.first;
 
         if (firstArgument is StringLiteral) {
-          reporter.reportErrorForNode(code, firstArgument);
+          reporter.atNode(node, code);
         }
       }
     });
